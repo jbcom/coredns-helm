@@ -84,7 +84,7 @@ spec:
       {{- end }}
       containers:
       - name: "coredns"
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ template "coredns.image" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         args: [ "-conf", "/etc/coredns/Corefile" ]
         volumeMounts:

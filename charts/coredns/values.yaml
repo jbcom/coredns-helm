@@ -23,6 +23,12 @@ resources:
     cpu: 100m
     memory: 128Mi
 
+multicluster:
+  enabled: false
+  image:
+    repository: ghcr.io/aws/aws-cloud-map-mcs-controller-for-k8s/coredns-multicluster/coredns
+    tag: v1.8.4
+    
 ## Create HorizontalPodAutoscaler object.
 ##
 # autoscaling:

@@ -19,6 +19,14 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 {{- end -}}
 
+{{- define "coredns.image" -}}
+{{- if .Values.multicluster.enabled -}}
+{{- printf "%s:%s" .Values.multicluster.image.repository .Values.multicluster.image.tag -}}
+{{- else -}}
+{{- printf "%s:%s" .Values.image.repository .Values.image.tag -}}
+{{- end -}}
+{{- end -}}
+
 {{/*
 Generate the list of ports automatically from the server definitions
 */}}

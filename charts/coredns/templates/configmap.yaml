@@ -30,6 +30,9 @@ data:
     {{- range $idx, $zone := .zones }}{{ if $idx }} {{ else }}{{ end }}{{ default "" $zone.scheme }}{{ default "." $zone.zone }}{{ else }}.{{ end -}}
     {{- if .port }}:{{ .port }} {{ end -}}
     {
+      {{- if $.Values.multicluster.enabled }}
+        multicluster clusterset.local
+      {{- end }}
       {{- range .plugins }}
         {{ .name }}{{ if .parameters }} {{ .parameters }}{{ end }}{{ if .configBlock }} {
 {{ .configBlock | indent 12 }}
